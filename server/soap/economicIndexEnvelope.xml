@@ -2,11 +2,11 @@
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <ObtenerIndicadoresEconomicos xmlns="http://ws.sdde.bccr.fi.cr">
-      <tcIndicador>317</tcIndicador>
-      <tcFechaInicio>01/01/2018</tcFechaInicio>
-      <tcFechaFinal>01/02/2018</tcFechaFinal>
-      <tcNombre>Kevin</tcNombre>
-      <tnSubNiveles>N</tnSubNiveles>
+      <tcIndicador>{tcIndicador}</tcIndicador>
+      <tcFechaInicio>{tcFechaInicio}</tcFechaInicio>
+      <tcFechaFinal>{tcFechaFinal}</tcFechaFinal>
+      <tcNombre>{tcNombre}</tcNombre>
+      <tnSubNiveles>{tnSubNiveles}</tnSubNiveles>
     </ObtenerIndicadoresEconomicos>
   </soap:Body>
 </soap:Envelope>

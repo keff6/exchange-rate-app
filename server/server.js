@@ -41,8 +41,33 @@ app.get('/api/ind', async (req, res) => {
   const xmlPath = path.join(__dirname, '..', 'server', 'soap', 'economicIndexEnvelope.xml');
 
   const xml = fs.readFileSync(xmlPath, 'utf-8');
+ 
 
   const resp = await getSoap(url, headers, xml);
+  res.send({ data: JSON.stringify(resp) });
+});
+
+function setArguments(xmlStr) {
+  const result = xmlStr
+    .replace('{tcIndicador}', 317)
+    .replace('{tcFechaInicio}', '01/01/2018')
+    .replace('{tcFechaFinal}', '10/01/2018')
+    .replace('{tcNombre}', 'Kevin')
+    .replace('{tnSubNiveles}', 'N');
+  return result;
+}
+
+app.get('/api/ind2', async (req, res) => {
+  const url = 'https://gee.bccr.fi.cr/indicadoreseconomicos/WebServices/wsIndicadoresEconomicos.asmx';
+  const headers = {
+    'user-agent': 'sampleTest',
+    'Content-Type': 'text/xml;charset=UTF-8',
+    'soapAction': 'http://ws.sdde.bccr.fi.cr/ObtenerIndicadoresEconomicos',
+  };
+  const xmlPath = path.join(__dirname, '..', 'server', 'soap', 'economicIndexEnvelope.xml');
+  const xml = fs.readFileSync(xmlPath, 'utf-8');
+  const result =  setArguments(xml);
+  const resp = await getSoap(url, headers, result);
   res.send({ data: resp });
 });
 
