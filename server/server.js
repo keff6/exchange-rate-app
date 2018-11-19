@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const soapRequest = require('easy-soap-request');
 const fs = require('fs');
 var path = require('path');
+const transform = require('camaro')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -68,7 +69,14 @@ app.get('/api/ind2', async (req, res) => {
   const xml = fs.readFileSync(xmlPath, 'utf-8');
   const result =  setArguments(xml);
   const resp = await getSoap(url, headers, result);
-  res.send({ data: resp });
+
+  const template = {
+    datos: ['//INGC011_CAT_INDICADORECONOMIC', {
+        code: 'COD_INDICADORINTERNO',
+    }]
+}
+const result2 = transform(resp, template);
+  res.send({ data: result2 });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
