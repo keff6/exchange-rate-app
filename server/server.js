@@ -71,12 +71,13 @@ app.get('/api/ind2', async (req, res) => {
   const resp = await getSoap(url, headers, result);
 
   const template = {
-    datos: ['//INGC011_CAT_INDICADORECONOMIC', {
-        code: 'COD_INDICADORINTERNO',
+    data: ['//INGC011_CAT_INDICADORECONOMIC', {
+        date: 'DES_FECHA',
+        value: 'NUM_VALOR'
     }]
 }
 const result2 = transform(resp, template);
-  res.send({ data: result2 });
+  res.send({ result2 });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
