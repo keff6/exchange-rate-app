@@ -58,7 +58,9 @@ function setArguments(xmlStr) {
   return result;
 }
 
-app.get('/api/ind2', async (req, res) => {
+app.post('/api/ind2', async (req, res) => {
+  console.log(req.body.startDate, req.body.endDate);
+
   const url = 'https://gee.bccr.fi.cr/indicadoreseconomicos/WebServices/wsIndicadoresEconomicos.asmx';
   const headers = {
     'user-agent': 'sampleTest',

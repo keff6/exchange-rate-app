@@ -30,6 +30,22 @@ class App extends Component {
     const body = await response.text();
     this.setState({ responseToPost: body });
   };
+
+  getDolarIndex = async () => {
+    const response = await fetch('/api/ind2', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+          startDate: 'start',
+          endDate: 'end'
+        }),
+    });
+    const body = await response.text();
+    console.log(body);
+  }
+
   render() {
     return (
       <div className="App">
@@ -46,6 +62,7 @@ class App extends Component {
           <button type="submit">Submit</button>
         </form>
         <p>{this.state.responseToPost}</p>
+        <button onClick={this.getDolarIndex}>Call index api</button>
       </div>
     );
   }
