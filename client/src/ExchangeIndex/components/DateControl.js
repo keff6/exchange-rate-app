@@ -6,18 +6,18 @@ class DateControl extends Component {
     return (
       <Row className="controls-container">
         <Col md={12}>
-          <Form>
+          <Form onSubmit={this.props.onSubmit}>
             <Row>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleDate">Start Date</Label>
-                  <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
+                  <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" onChange={this.props.onChangeStartDate}/>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label for="exampleDate">End Date</Label>
-                  <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
+                  <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" onChange={this.props.onChangeEndDate}/>
                 </FormGroup>
               </Col>
               <Col md={6}>
