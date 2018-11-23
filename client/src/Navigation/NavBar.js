@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink as RRNavLink, withRouter } from 'react-router-dom'
 import {
   Navbar,
   NavbarBrand,
@@ -8,6 +9,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+import { routes } from '../Routing/routes';
 
 
 class NavBar extends Component {
@@ -31,7 +33,10 @@ class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/about/">About</NavLink>
+                <NavLink to={routes.ROOT} tag={RRNavLink}>Dashboard</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to={routes.ABOUT} tag={RRNavLink}>About</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -41,4 +46,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

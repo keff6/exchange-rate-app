@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ExchangeIndex from './ExchangeIndex/ExchangeIndex';
+import {withRouter } from 'react-router-dom'
 import NavBar from './Navigation/NavBar';
 import './App.css';
+import Router from './Routing/Router';
 
 class App extends Component {
   // state = {
@@ -52,10 +53,10 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <ExchangeIndex />        
+        <Router />       
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
