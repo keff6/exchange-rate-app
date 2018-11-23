@@ -10,7 +10,7 @@
     "body-parser": "^1.18.3",
     "camaro": "^3.0.13",
     "easy-soap-request": "^2.3.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4"    
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
