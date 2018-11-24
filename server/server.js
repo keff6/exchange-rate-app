@@ -48,11 +48,11 @@ app.get('/api/ind', async (req, res) => {
   res.send({ data: JSON.stringify(resp) });
 });
 
-function setArguments(xmlStr) {
+function setArguments(xmlStr, start, end) {
   const result = xmlStr
     .replace('{tcIndicador}', 317)
-    .replace('{tcFechaInicio}', '01/01/2018')
-    .replace('{tcFechaFinal}', '10/01/2018')
+    .replace('{tcFechaInicio}', start)
+    .replace('{tcFechaFinal}', end)
     .replace('{tcNombre}', 'Kevin')
     .replace('{tnSubNiveles}', 'N');
   return result;
@@ -69,7 +69,7 @@ app.post('/api/ind2', async (req, res) => {
   };
   const xmlPath = path.join(__dirname, '..', 'server', 'soap', 'economicIndexEnvelope.xml');
   const xml = fs.readFileSync(xmlPath, 'utf-8');
-  const result =  setArguments(xml);
+  const result =  setArguments(xml, req.body.startDate, req.body.endDate);
   const resp = await getSoap(url, headers, result);
 
   const template = {
