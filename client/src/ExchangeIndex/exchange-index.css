@@ -9,3 +9,11 @@
 .controls-container .buttons {
   line-height: 95px;
 }
+
+.charts-container {
+  border: 1px solid gray;
+}
+
+.charts-container .row{
+  padding: 15px;
+}

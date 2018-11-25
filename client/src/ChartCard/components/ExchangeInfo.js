@@ -2,7 +2,7 @@ import React from 'react';
 
 const ExchangeInfo = () => {
   return (
-    <div>
+    <div className="info-container col-md-2">
       ExchangeInfo
     </div>
   );

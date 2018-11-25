@@ -6,7 +6,8 @@ import './exchange-index.css';
 class ExchangeIndex extends Component {
   state = {
     startDate: "",
-    endDate: ""
+    endDate: "",
+    data: []
   }
 
   submitHandler = (e) => {
@@ -29,7 +30,7 @@ class ExchangeIndex extends Component {
   }
 
   getDolarIndex = async () => {
-    const response = await fetch('/api/ind2', {
+    const response = await fetch('/api/index', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ class ExchangeIndex extends Component {
         }),
     });
     const body = await response.text();
-    console.log(body);
+    this.setState({data: body});
   }
 
   render() {
@@ -51,7 +52,7 @@ class ExchangeIndex extends Component {
           onChangeStartDate={this.startDateHandler}
           onChangeEndDate={this.endDateHandler}
         />
-        <ChartsContainer />
+        <ChartsContainer data={this.state.data}/>
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Chart = () => {
   return (
-    <div>
+    <div className="chart-container col-md-10">
       Chart
     </div>
   );
