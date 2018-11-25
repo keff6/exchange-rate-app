@@ -40,7 +40,8 @@ class ExchangeIndex extends Component {
           endDate: this.state.endDate
         }),
     });
-    const body = await response.text();
+    const body = await response.text();    
+
     this.setState({data: body});
   }
 

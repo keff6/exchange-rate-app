@@ -48,8 +48,8 @@ app.post('/api/index', async (req, res) => {
         value: 'NUM_VALOR'
     }]
 }
-const result2 = transform(resp, template);
-  res.send({ result2 });
+// const result2 = transform(resp, template);
+  res.send(transform(resp, template));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
