@@ -8,12 +8,8 @@ class ChartsContainer extends Component {
     return (
       <div className="charts-container"> 
         <Row>
-          <ChartCard />
-        </Row>   
-
-        <Row>
-          <ChartCard />
-        </Row>      
+          <ChartCard data={this.props.data}/>
+        </Row>     
       </div>
     );
   }

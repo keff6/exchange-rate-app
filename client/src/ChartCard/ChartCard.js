@@ -9,7 +9,7 @@ class ChartCard extends Component {
     return (
       <div className="chart-card col-md-12">
         <Row>
-          <Chart />
+          <Chart data={this.props.data}/>
           <ExchangeInfo />
         </Row>        
       </div>
