@@ -40,9 +40,13 @@ class ExchangeIndex extends Component {
           endDate: this.state.endDate
         }),
     });
-    const { data } = await response.json();    
-    // console.log(data)
-
+    let { data } = await response.json(); 
+    
+    data = data.map(val => {
+      val.date = new Date(val.date).toLocaleString().split(' ')[0];
+      val.value = Number(val.value).toFixed(2)
+      return val
+    })
     this.setState({data});
   }
 
