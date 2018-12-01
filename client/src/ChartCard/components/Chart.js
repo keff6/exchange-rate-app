@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 const Chart = (props) => {
   return (
@@ -9,6 +9,8 @@ const Chart = (props) => {
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="date" />
         <YAxis />
+        <Tooltip/>
+        <Legend />
       </LineChart>
     </div>
   );

@@ -3,12 +3,14 @@ import DateControl from './components/DateControl';
 import ChartsContainer from './components/ChartsContainer';
 import './exchange-index.css';
 
+const initialState ={
+  startDate: "",
+  endDate: "",
+  data: []
+}
+
 class ExchangeIndex extends Component {
-  state = {
-    startDate: "",
-    endDate: "",
-    data: []
-  }
+  state = initialState
 
   submitHandler = (e) => {
     e.preventDefault();
@@ -18,15 +20,19 @@ class ExchangeIndex extends Component {
 
   startDateHandler = (event) => {
     // console.log("start:", event.target.value)
-    const parsedStart = event.target.value.split('-').reverse().join('/');
-    this.setState({startDate: parsedStart});
+    // const parsedStart = event.target.value.split('-').reverse().join('/');
+    this.setState({startDate: event.target.value});
   }
 
   endDateHandler = (event) => {
     // console.log("end:",event.target.value)
-    const parsedEnd = event.target.value.split('-').reverse().join('/');
+    // const parsedEnd = event.target.value.split('-').reverse().join('/');
 
-    this.setState({endDate: parsedEnd});
+    this.setState({endDate: event.target.value});
+  }
+
+  clearControls = () => {
+    this.setState(initialState);
   }
 
   getDolarIndex = async () => {
@@ -36,8 +42,8 @@ class ExchangeIndex extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-          startDate: this.state.startDate,
-          endDate: this.state.endDate
+          startDate: this.state.startDate.split('-').reverse().join('/'),
+          endDate: this.state.endDate.split('-').reverse().join('/')
         }),
     });
     let { data } = await response.json(); 
@@ -57,6 +63,9 @@ class ExchangeIndex extends Component {
           onSubmit={this.submitHandler}
           onChangeStartDate={this.startDateHandler}
           onChangeEndDate={this.endDateHandler}
+          onClearControls={this.clearControls}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
         />
         <ChartsContainer data={this.state.data}/>
       </div>
