@@ -46,13 +46,8 @@ class ExchangeIndex extends Component {
           endDate: this.state.endDate.split('-').reverse().join('/')
         }),
     });
-    let { data } = await response.json(); 
-    
-    data = data.map(val => {
-      val.date = new Date(val.date).toLocaleString().split(' ')[0];
-      val.value = Number(val.value).toFixed(2)
-      return val
-    })
+    let { data } = await response.json();
+    console.log(data)
     this.setState({data});
   }
 

@@ -1,6 +1,7 @@
 
 const soapRequest = require('easy-soap-request');
 const transform = require('camaro')
+const moment = require('moment');
 const fs = require('fs');
 var path = require('path');
 
@@ -27,7 +28,8 @@ class ExchangeService {
             console.log(envelope)
             const soapResult = await this.getSoap(envelope);
             console.log(soapResult)
-            return transform(soapResult, template);
+            const result = transform(soapResult, template)
+            return this.parseResponse(result);
         }  catch (error) {
             console.log('ERR1: '+ error)
         }
@@ -52,6 +54,16 @@ class ExchangeService {
             console.log('ERR2: '+error)
         }
     } 
+
+    parseResponse(res) {
+        const parsedResult = res.data.map(val => {
+            val.date = moment(new Date(val.date)).format("DD/MM/YYYY")
+            val.value = Number(val.value).toFixed(2)
+            return val
+        });
+        console.log(parsedResult)
+        return parsedResult
+    }
 }
 
 module.exports = ExchangeService;
