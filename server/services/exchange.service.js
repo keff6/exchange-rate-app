@@ -25,9 +25,7 @@ class ExchangeService {
         try {
             const xml = await fs.readFileSync(xmlPath, 'utf-8');
             const envelope = this.setArguments(xml, start, end);
-            console.log(envelope)
             const soapResult = await this.getSoap(envelope);
-            console.log(soapResult)
             const result = transform(soapResult, template)
             return this.parseResponse(result);
         }  catch (error) {
