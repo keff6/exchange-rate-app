@@ -10,6 +10,9 @@ class ChartCard extends Component {
     return (
       <div className="chart-card col-md-12">
         <Row>
+          <div className="dates-header">
+            5/11/2018 - 25/11/2018
+          </div>          
           <Chart data={this.props.data}/>
           <ExchangeInfo data={this.props.data}/>
         </Row>        

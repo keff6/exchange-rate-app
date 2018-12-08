@@ -3,8 +3,29 @@
     padding: 5px;
     border-radius: 8px;
     margin: 0 auto;
+    position: relative;
 }
 
 .chart-container {
-    height: 300px;
+    height: 250px;
+    padding-top: 15px;
+}
+
+.dates-header {
+    position: absolute;
+    top: -10px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.info-container{
+    padding: 15px;
+}
+
+label {
+    margin-right: 10px;
+    color: rgb(4, 78, 50);
+    font-weight: bold
 }
