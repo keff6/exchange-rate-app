@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DateControl from './components/DateControl';
 import ChartsContainer from './components/ChartsContainer';
+import ExchangeService from '../services/exchange.service'
 import './exchange-index.css';
 
 const initialState ={
@@ -36,17 +37,10 @@ class ExchangeIndex extends Component {
   }
 
   getDolarIndex = async () => {
-    const response = await fetch('/api/index', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
-          startDate: this.state.startDate.split('-').reverse().join('/'),
-          endDate: this.state.endDate.split('-').reverse().join('/')
-        }),
-    });
-    let { data } = await response.json();
+    const exchangeService = new ExchangeService();
+    const start = this.state.startDate.split('-').reverse().join('/');
+    const end = this.state.endDate.split('-').reverse().join('/');
+    let { data } = await exchangeService.getDolarIndex(start, end);
     console.log(data)
     this.setState({data});
   }
