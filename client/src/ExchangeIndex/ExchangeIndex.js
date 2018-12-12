@@ -7,7 +7,7 @@ import './exchange-index.css';
 const initialState ={
   startDate: "",
   endDate: "",
-  data: []
+  cards: []
 }
 
 class ExchangeIndex extends Component {
@@ -37,12 +37,18 @@ class ExchangeIndex extends Component {
   }
 
   getDolarIndex = async () => {
+    const { cards } = this.state;
     const exchangeService = new ExchangeService();
-    const start = this.state.startDate.split('-').reverse().join('/');
-    const end = this.state.endDate.split('-').reverse().join('/');
-    let { data } = await exchangeService.getDolarIndex(start, end);
+    const startFE = this.state.startDate.split('-').reverse().join('/');
+    const endFE = this.state.endDate.split('-').reverse().join('/');
+    let { data, start, end } = await exchangeService.getDolarIndex(startFE, endFE);
     console.log(data)
-    this.setState({data});
+    cards.push({
+      data,
+      start,
+      end
+    })
+    this.setState({cards});
   }
 
   render() {
@@ -56,7 +62,9 @@ class ExchangeIndex extends Component {
           startDate={this.state.startDate}
           endDate={this.state.endDate}
         />
-        <ChartsContainer data={this.state.data}/>
+        <ChartsContainer
+          cards={this.state.cards}
+        />
       </div>
     )
   }

@@ -11,10 +11,10 @@ class ChartCard extends Component {
       <div className="chart-card col-md-12">
         <Row>
           <div className="dates-header">
-            5/11/2018 - 25/11/2018
+            {this.props.cardData.start} - {this.props.cardData.end}
           </div>          
-          <Chart data={this.props.data}/>
-          <ExchangeInfo data={this.props.data}/>
+          <Chart data={this.props.cardData.data}/>
+          <ExchangeInfo data={this.props.cardData.data}/>
         </Row>        
       </div>
     );

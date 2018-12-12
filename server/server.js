@@ -11,7 +11,11 @@ app.post('/api/index', async (req, res) => {
   const { startDate, endDate } = req.body;
   console.log(startDate, endDate)
   const result = await exchangeService.getDolarIndex(startDate, endDate);
-  res.send({ data: result});
+  res.send({ 
+    start: startDate,
+    end: endDate,
+    data: result,
+  });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
