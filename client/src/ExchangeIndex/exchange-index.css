@@ -1,9 +1,10 @@
 .dashboard {
-  border: 1px solid black;
+  margin-top: 1rem;
 }
 
 .controls-container {
   height: 80px;
+  border-bottom: 1px solid gray;
 }
 
 .controls-container .buttons {
@@ -11,7 +12,7 @@
 }
 
 .charts-container {
-  border: 1px solid gray;
+  margin-top: 20px;
 }
 
 .charts-container .row{
