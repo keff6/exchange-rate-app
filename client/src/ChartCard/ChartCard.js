@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Chart from './components/Chart';
 import ExchangeInfo from './components/ExchangeInfo';
 import './chart-card.css';
 import { Row } from 'reactstrap';
 
-class ChartCard extends Component {
+const ChartCard = (props) => (
+  <div className="chart-card col-md-12">
+    <Row>
+      <div className="dates-header">
+        {props.cardData.start} - {props.cardData.end}
+      </div>          
+      <Chart data={props.cardData.data}/>
+      <ExchangeInfo data={props.cardData.data}/>
+    </Row>        
+  </div>
+);
 
-  render() {
-    return (
-      <div className="chart-card col-md-12">
-        <Row>
-          <div className="dates-header">
-            {this.props.cardData.start} - {this.props.cardData.end}
-          </div>          
-          <Chart data={this.props.cardData.data}/>
-          <ExchangeInfo data={this.props.cardData.data}/>
-        </Row>        
-      </div>
-    );
-  }
+ChartCard.propTypes = {
+  cardData: PropTypes.object
 }
 
 export default ChartCard;

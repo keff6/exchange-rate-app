@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/api/index', async (req, res) => {   
   const exchangeService = new ExchangeService();
   const { startDate, endDate } = req.body;
-  console.log(startDate, endDate)
   const result = await exchangeService.getDolarIndex(startDate, endDate);
   res.send({ 
     start: startDate,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ExchangeInfo = (props) => {
   function getMax() {
@@ -20,6 +21,10 @@ const ExchangeInfo = (props) => {
       <p><label>avg</label>{props.data.length > 0 ? getAverage(): 0}</p>
     </div>
   );
+}
+
+ExchangeInfo.propTypes = {
+  data: PropTypes.object
 }
 
 export default ExchangeInfo;

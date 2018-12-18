@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Chart = (props) => {
@@ -16,6 +17,10 @@ const Chart = (props) => {
       </ResponsiveContainer>
     </div>
   );
+}
+
+Chart.propTypes = {
+  data: PropTypes.object
 }
 
 export default Chart;

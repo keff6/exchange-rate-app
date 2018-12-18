@@ -15,20 +15,14 @@ class ExchangeIndex extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state.startDate);
     this.getDolarIndex();
   }
 
   startDateHandler = (event) => {
-    // console.log("start:", event.target.value)
-    // const parsedStart = event.target.value.split('-').reverse().join('/');
     this.setState({startDate: event.target.value});
   }
 
   endDateHandler = (event) => {
-    // console.log("end:",event.target.value)
-    // const parsedEnd = event.target.value.split('-').reverse().join('/');
-
     this.setState({endDate: event.target.value});
   }
 
@@ -42,7 +36,6 @@ class ExchangeIndex extends Component {
     const startFE = this.state.startDate.split('-').reverse().join('/');
     const endFE = this.state.endDate.split('-').reverse().join('/');
     let { data, start, end } = await exchangeService.getDolarIndex(startFE, endFE);
-    console.log(data)
     cards.push({
       data,
       start,

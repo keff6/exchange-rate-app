@@ -18,7 +18,7 @@ const template = {
         date: 'DES_FECHA',
         value: 'NUM_VALOR'
     }]
-  }
+}
 
 class ExchangeService {   
     async getDolarIndex(start, end) {
@@ -59,7 +59,6 @@ class ExchangeService {
             val.value = Number(val.value).toFixed(2)
             return val
         });
-        console.log(parsedResult)
         return parsedResult
     }
 }
