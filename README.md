@@ -11,3 +11,4 @@ An app to consume data from BCCR webservice and deploy it on charts.
 ## How to use it
 
 * Install nodemon on your machine: npm install nodemon -g
+* yarn dev
