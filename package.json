@@ -10,7 +10,7 @@
     "body-parser": "^1.18.3",
     "camaro": "^3.0.13",
     "easy-soap-request": "^2.3.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2"
   },
